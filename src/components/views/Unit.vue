@@ -19,8 +19,8 @@ export default {
       Unit: [],
       form: {
         id: '',
-        KategoriUnit_id: '',
-        Nama: ''
+        Nama: '',
+        KategoriUnit_id: ''
       }
     }
   },
@@ -41,8 +41,8 @@ export default {
         console.log(index)
         axios.put('http://10.199.14.41:8028/api/Unit/' + index[0], {
           id: index[0],
-          KategoriUnit_id: index[1],
-          nama: index[2]
+          nama: index[1],
+          KategoriUnit_id: index[2]
         }).then(res => {
           console.log(res.data)
         })
@@ -68,8 +68,8 @@ export default {
         ondeleterow: this.deleteRow,
         columns: [
           { type: 'hidden', title: 'id', width: '50px' },
-          { type: 'text', title: 'KategoriUnit_id', width: '120px' },
-          { type: 'text', title: 'nama', width: '200px' }
+          { type: 'text', title: 'nama', width: '200px' },
+          { type: 'text', title: 'KategoriUnit_id', width: '120px' }
         ]
       }
     }

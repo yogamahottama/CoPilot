@@ -14,7 +14,7 @@ import ExcelView from './components/views/Excel.vue'
 import DataDasarView from './components/views/DataDasar.vue'
 import KategoriUnitView from './components/views/KategoriUnit.vue'
 import UnitView from './components/views/Unit.vue'
-import Capaian_UnitView from './components/views/Capaian_Unit.vue'
+import CapaianUnitView from './components/views/Capaian_Unit.vue'
 
 // Routes
 const routes = [
@@ -83,8 +83,8 @@ const routes = [
         name: 'Unit',
         meta: {description: 'oi'}
       }, {
-        path: 'Capaian_Unit',
-        component: Capaian_UnitView,
+        path: 'CapaianUnit',
+        component: CapaianUnitView,
         name: 'Capaian_Unit',
         meta: {description: 'oi'}
       }
