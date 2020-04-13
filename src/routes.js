@@ -70,23 +70,23 @@ const routes = [
       }, {
         path: 'DataDasar',
         component: DataDasarView,
-        name: 'DataDasar',
-        meta: {description: 'oi'}
+        name: 'Data Dasar',
+        meta: {description: ''}
       }, {
         path: 'KategoriUnit',
         component: KategoriUnitView,
-        name: 'KategoriUnit',
-        meta: {description: 'oi'}
+        name: 'Kategori Unit',
+        meta: {description: ''}
       }, {
         path: 'Unit',
         component: UnitView,
         name: 'Unit',
-        meta: {description: 'oi'}
+        meta: {description: ''}
       }, {
         path: 'CapaianUnit',
         component: CapaianUnitView,
-        name: 'Capaian_Unit',
-        meta: {description: 'oi'}
+        name: 'Capaian Unit',
+        meta: {description: ''}
       }
     ]
   }, {

@@ -45,6 +45,12 @@
         <span class="page">Unit</span>
       </a>
     </router-link>
+    <router-link tag="li" class="pageLink" to="/CapaianUnit">
+      <a>
+        <i class="fa fa-table"></i>
+        <span class="page">Capaian Unit</span>
+      </a>
+    </router-link>
     <li class="treeview">
       <a href="#">
         <i class="fa fa-folder-o"></i>
