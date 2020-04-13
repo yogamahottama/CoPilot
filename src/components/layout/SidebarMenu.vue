@@ -14,17 +14,35 @@
       </a>
     </router-link>
 
-    <li class="header">ME</li>
-    <router-link tag="li" class="pageLink" to="/tasks">
+    <li class="header">TugasPBKK</li>
+    <router-link tag="li" class="pageLink" to="/excel">
       <a>
-        <i class="fa fa-tasks"></i>
-        <span class="page">Tasks</span>
+        <i class="fa fa-table"></i>
+        <span class="page">Mahasiswa</span>
       </a>
     </router-link>
-    <router-link tag="li" class="pageLink" to="/setting">
+    <router-link tag="li" class="pageLink" to="/DataDasar">
       <a>
-        <i class="fa fa-cog"></i>
-        <span class="page">Settings</span>
+        <i class="fa fa-table"></i>
+        <span class="page">Data Dasar</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/KategoriUnit">
+      <a>
+        <i class="fa fa-table"></i>
+        <span class="page">Kategori Unit</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/KategoriUnit">
+      <a>
+        <i class="fa fa-table"></i>
+        <span class="page">Kategori Unit</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/Unit">
+      <a>
+        <i class="fa fa-table"></i>
+        <span class="page">Unit</span>
       </a>
     </router-link>
     <li class="treeview">
