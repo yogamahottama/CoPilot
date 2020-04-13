@@ -33,12 +33,6 @@
         <span class="page">Kategori Unit</span>
       </a>
     </router-link>
-    <router-link tag="li" class="pageLink" to="/KategoriUnit">
-      <a>
-        <i class="fa fa-table"></i>
-        <span class="page">Kategori Unit</span>
-      </a>
-    </router-link>
     <router-link tag="li" class="pageLink" to="/Unit">
       <a>
         <i class="fa fa-table"></i>
