@@ -31,16 +31,16 @@ export default {
   },
   methods: {
     newRow() {
-      axios.post('http://localhost:8028/api/Capaian_Unit/', this.form).then(res => {
+      axios.post('http://10.199.14.46:8028/api/Capaian_Unit/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get('http://localhost:8028/api/Capaian_Unit/').then(res => {
+      axios.get('http://10.199.14.46:8028/api/Capaian_Unit/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put('http://localhost:8028/api/Capaian_Unit/' + index[0], {
+        axios.put('http://10.199.14.46:8028/api/Capaian_Unit/' + index[0], {
           DataDasar_id: index[0],
           Unit_id: index[1],
           waktu: index[2],
@@ -51,11 +51,11 @@ export default {
       })
     },
     deleteRow(instance, row) {
-      axios.get('http://localhost:8028/api/Capaian_Unit/').then(res => {
+      axios.get('http://10.199.14.46:8028/api/Capaian_Unit/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete('http://localhost:8028/api/Capaian_Unit/' + index[0])
+        axios.delete('http://10.199.14.46:8028/api/Capaian_Unit/' + index[0])
       })
     }
   },
@@ -64,7 +64,7 @@ export default {
       return {
         data: this.Capaian_Unit,
         allowToolbar: true,
-        url: 'http://localhost:8028/api/Capaian_Unit/',
+        url: 'http://10.199.14.46:8028/api/Capaian_Unit/',
         onchange: this.updateRow,
         oninsertrow: this.newRow,
         ondeleterow: this.deleteRow,

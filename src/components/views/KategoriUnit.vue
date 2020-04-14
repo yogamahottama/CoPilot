@@ -29,16 +29,16 @@ export default {
   },
   methods: {
     newRow() {
-      axios.post('http://localhost:8028/api/KategoriUnit/', this.form).then(res => {
+      axios.post('http://10.199.14.46/api/KategoriUnit/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get('http://localhost:8028/api/KategoriUnit/').then(res => {
+      axios.get('http://10.199.14.46/api/KategoriUnit/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put('http://localhost:8028/api/KategoriUnit/' + index[0], {
+        axios.put('http://10.199.14.46/api/KategoriUnit/' + index[0], {
           id: index[0],
           nama: index[1]
         }).then(res => {
@@ -47,11 +47,11 @@ export default {
       })
     },
     deleteRow(instance, row) {
-      axios.get('http://localhost:8028/api/KategoriUnit/').then(res => {
+      axios.get('http://10.199.14.46/api/KategoriUnit/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete('http://localhost:8028/api/KategoriUnit/' + index[0])
+        axios.delete('http://10.199.14.46/api/KategoriUnit/' + index[0])
       })
     }
   },
@@ -60,7 +60,7 @@ export default {
       return {
         data: this.KategoriUnit,
         allowToolbar: true,
-        url: 'http://localhost:8028/api/KategoriUnit/',
+        url: 'http://10.199.14.46/api/KategoriUnit/',
         onchange: this.updateRow,
         oninsertrow: this.newRow,
         ondeleterow: this.deleteRow,
