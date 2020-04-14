@@ -12,33 +12,52 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
+var host = 'http://10.199.14.46:8028/'
+// var host = 'http://127.0.0.1:8028/'
 export default {
   // name: 'App',
   data() {
     return {
-      KategoriUnit: [],
+      dataDasar: [],
       form: {
-        id: '',
         nama: ''
       }
     }
   },
   mounted() {
-    let spreadsheet = jexcel(this.$el, this.jexcelOptions)
-    Object.assign(this, { spreadsheet })
+    this.load()
   },
   methods: {
+    load() {
+      axios.get(host + 'api/KategoriUnit/').then(res => {
+        console.log(res.data)
+        var jexcelOptions = {
+          data: res.data,
+          allowToolbar: true,
+          onchange: this.updateRow,
+          oninsertrow: this.newRow,
+          ondeleterow: this.deleteRow,
+          responsive: true,
+          columns: [
+            { type: 'hidden', title: 'id', width: '10px' },
+            { type: 'text', title: 'Nama', width: '120px' }
+          ]
+        }
+        let spreadsheet = jexcel(this.$el, jexcelOptions)
+        Object.assign(this, { spreadsheet })
+      })
+    },
     newRow() {
-      axios.post('http://10.199.14.46:8028/api/KategoriUnit/', this.form).then(res => {
+      axios.post(host + 'api/KategoriUnit/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get('http://10.199.14.46:8028/api/KategoriUnit/').then(res => {
+      axios.get(host + 'api/KategoriUnit/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put('http://10.199.14.46:8028/api/KategoriUnit/' + index[0], {
+        axios.put(host + 'api/KategoriUnit/' + index[0], {
           id: index[0],
           nama: index[1]
         }).then(res => {
@@ -47,28 +66,12 @@ export default {
       })
     },
     deleteRow(instance, row) {
-      axios.get('http://10.199.14.46:8028/api/KategoriUnit/').then(res => {
+      axios.get(host + 'api/KategoriUnit/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete('http://10.199.14.46:8028/api/KategoriUnit/' + index[0])
+        axios.delete(host + 'api/KategoriUnit/' + index[0])
       })
-    }
-  },
-  computed: {
-    jexcelOptions() {
-      return {
-        data: this.KategoriUnit,
-        allowToolbar: true,
-        url: 'http://10.199.14.46:8028/api/KategoriUnit/',
-        onchange: this.updateRow,
-        oninsertrow: this.newRow,
-        ondeleterow: this.deleteRow,
-        columns: [
-          { type: 'hidden', title: 'id', width: '50px' },
-          { type: 'text', title: 'nama', width: '200px' }
-        ]
-      }
     }
   }
 }
