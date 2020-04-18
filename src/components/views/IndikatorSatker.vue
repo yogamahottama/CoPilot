@@ -52,7 +52,7 @@ export default {
             { type: 'text', title: 'Bobot', width: '120px' },
             { type: 'text', title: 'Target', width: '120px' },
             { type: 'text', title: 'Capaian', width: '120px' },
-            { type: 'text', title: 'Last Update', width: '120px', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '120px', readOnly: true }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)

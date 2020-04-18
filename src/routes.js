@@ -20,6 +20,7 @@ import PeriodeView from './components/views/Periode.vue'
 import MasterIndikatorView from './components/views/MasterIndikator.vue'
 import IndikatorPeriodeView from './components/views/IndikatorPeriode.vue'
 import SatuanKerjaView from './components/views/SatuanKerja.vue'
+import IndikatorSatkerView from './components/views/IndikatorSatker.vue'
 
 // Routes
 const routes = [
@@ -116,6 +117,11 @@ const routes = [
         path: 'satuankerja',
         component: SatuanKerjaView,
         name: 'SatuanKerja',
+        meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'indikatorsatker',
+        component: IndikatorSatkerView,
+        name: 'IndikatorSatker',
         meta: {description: 'List of popular javascript repos'}
       }
     ]
