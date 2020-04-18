@@ -14,7 +14,12 @@ import ExcelView from './components/views/Excel.vue'
 import DataDasarView from './components/views/DataDasar.vue'
 import KategoriUnitView from './components/views/KategoriUnit.vue'
 import UnitView from './components/views/Unit.vue'
-import CapaianUnitView from './components/views/Capaian_Unit.vue'
+import CapaianUnitView from './components/views/CapaianUnit.vue'
+import JenisSatkerView from './components/views/JenisSatker.vue'
+import PeriodeView from './components/views/Periode.vue'
+import MasterIndikatorView from './components/views/MasterIndikator.vue'
+import IndikatorPeriodeView from './components/views/IndikatorPeriode.vue'
+import SatuanKerjaView from './components/views/SatuanKerja.vue'
 
 // Routes
 const routes = [
@@ -68,14 +73,14 @@ const routes = [
         name: 'Excel',
         meta: {description: 'Excel'}
       }, {
-        path: 'DataDasar',
+        path: 'datadasar',
         component: DataDasarView,
-        name: 'Data Dasar',
+        name: 'DataDasar',
         meta: {description: ''}
       }, {
-        path: 'KategoriUnit',
+        path: 'kategoriunit',
         component: KategoriUnitView,
-        name: 'Kategori Unit',
+        name: 'KategoriUnit',
         meta: {description: ''}
       }, {
         path: 'Unit',
@@ -83,10 +88,35 @@ const routes = [
         name: 'Unit',
         meta: {description: ''}
       }, {
-        path: 'CapaianUnit',
+        path: 'capaianunit',
         component: CapaianUnitView,
-        name: 'Capaian Unit',
+        name: 'CapaianUnit',
         meta: {description: ''}
+      }, {
+        path: 'jenissatker',
+        component: JenisSatkerView,
+        name: 'JenisSatker',
+        meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'periode',
+        component: PeriodeView,
+        name: 'Periode',
+        meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'masterindikator',
+        component: MasterIndikatorView,
+        name: 'MasterIndikator',
+        meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'indikatorperiode',
+        component: IndikatorPeriodeView,
+        name: 'IndikatorPeriode',
+        meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'satuankerja',
+        component: SatuanKerjaView,
+        name: 'SatuanKerja',
+        meta: {description: 'List of popular javascript repos'}
       }
     ]
   }, {

@@ -17,10 +17,9 @@ export default {
   // name: 'App',
   data() {
     return {
-      unit: [],
+      jenisSatker: [],
       form: {
-        KategoriUnit_id: 1,
-        nama: ''
+        nama: 'blank'
       }
     }
   },
@@ -29,7 +28,7 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/jenissatker/').then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
@@ -40,8 +39,10 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'dropdown', title: 'Kategori', url: host + 'api/kategori/', width: '120px' },
-            { type: 'text', title: 'Nama', width: '120px' }
+            { type: 'text', title: 'Nama', width: '120px' },
+            { type: 'text', title: 'Create Date', width: '200px', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '200px', readOnly: true },
+            { type: 'text', title: 'Expired Date', width: '200px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
@@ -49,30 +50,32 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + 'api/unit/', this.form).then(res => {
+      axios.post(host + 'api/jenissatker/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/jenissatker/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put(host + 'api/unit/' + index[0], {
+        axios.put(host + 'api/jenissatker/' + index[0], {
           id: index[0],
-          KategoriUnit_id: index[1],
-          nama: index[2]
+          nama: index[1],
+          create_date: index[2],
+          last_update: index[3],
+          expired_date: index[4]
         }).then(res => {
           console.log(res.data)
         })
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/jenissatker/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + 'api/unit/' + index[0])
+        axios.delete(host + 'api/jenissatker/' + index[0])
       })
     }
   }

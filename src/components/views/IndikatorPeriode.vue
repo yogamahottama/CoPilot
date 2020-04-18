@@ -13,14 +13,17 @@ import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
 var host = 'http://10.199.14.46:8028/'
+var dropdownMasterIndikator = 'http://10.199.14.46:8028/api/masterindikator/nama/'
+var dropdownPeriode = 'http://10.199.14.46:8028/api/periode/nama/'
 export default {
   // name: 'App',
   data() {
     return {
-      unit: [],
+      masterIndikator: [],
       form: {
-        KategoriUnit_id: 1,
-        nama: ''
+        id_master: 1,
+        id_periode: 2020,
+        bobot: 0.0
       }
     }
   },
@@ -29,7 +32,7 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/indikatorperiode/').then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
@@ -39,9 +42,9 @@ export default {
           ondeleterow: this.deleteRow,
           responsive: true,
           columns: [
-            { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'dropdown', title: 'Kategori', url: host + 'api/kategori/', width: '120px' },
-            { type: 'text', title: 'Nama', width: '120px' }
+            { type: 'dropdown', title: 'Master Indikator', url: dropdownMasterIndikator, width: '120px' },
+            { type: 'dropdown', title: 'Periode', url: dropdownPeriode, width: '120px' },
+            { type: 'text', title: 'Bobot', width: '120px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
@@ -49,30 +52,32 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + 'api/unit/', this.form).then(res => {
+      axios.post(host + 'api/indikatorperiode/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/indikatorperiode/').then(res => {
         var index = Object.values(res.data[row])
+        var old = Object.values(res.data[row])
         index[columns] = value
-        console.log(index)
-        axios.put(host + 'api/unit/' + index[0], {
-          id: index[0],
-          KategoriUnit_id: index[1],
-          nama: index[2]
+        console.log(old[0] + ' ' + old[1])
+        console.log(index[0] + ' ' + index[1])
+        axios.put(host + 'api/indikatorperiode/' + old[0] + '&' + old[1], {
+          id_master: index[0],
+          id_periode: index[1],
+          bobot: index[2]
         }).then(res => {
           console.log(res.data)
         })
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/indikatorperiode/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + 'api/unit/' + index[0])
+        axios.delete(host + 'api/indikatorperiode/' + index[0] + '&' + index[1])
       })
     }
   }

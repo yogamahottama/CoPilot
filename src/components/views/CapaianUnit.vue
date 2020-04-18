@@ -12,15 +12,18 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-var host = 'http://10.199.14.46:8028/'
+var host = 'http://10.199.14.46:8028/api/capaian-unit/'
+var dropdownDataDasar = 'http://10.199.14.46:8028/api/data-dasar/nama/'
+var dropdownSatuanKerja = 'http://10.199.14.46:8028/api/satuan-kerja/nama/'
 export default {
   // name: 'App',
   data() {
     return {
-      unit: [],
+      capaianUnit: [],
       form: {
-        KategoriUnit_id: 1,
-        nama: ''
+        id_satker: 'aff',
+        id_datadasar: 1,
+        capaian: 0.0
       }
     }
   },
@@ -29,19 +32,21 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host).then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
           allowToolbar: true,
           onchange: this.updateRow,
+          // onbeforechange: this.oldRow,
           oninsertrow: this.newRow,
           ondeleterow: this.deleteRow,
           responsive: true,
           columns: [
-            { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'dropdown', title: 'Kategori', url: host + 'api/kategori/', width: '120px' },
-            { type: 'text', title: 'Nama', width: '120px' }
+            { type: 'dropdown', title: 'Satuan Kerja', url: dropdownSatuanKerja, width: '120px' },
+            { type: 'dropdown', title: 'Data Dasar', url: dropdownDataDasar, width: '120px' },
+            { type: 'text', title: 'Waktu', width: '200px', readOnly: true },
+            { type: 'text', title: 'Capaian', width: '120px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
@@ -49,31 +54,37 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + 'api/unit/', this.form).then(res => {
+      axios.post(host, this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host).then(res => {
         var index = Object.values(res.data[row])
+        var old = Object.values(res.data[row])
         index[columns] = value
-        console.log(index)
-        axios.put(host + 'api/unit/' + index[0], {
-          id: index[0],
-          KategoriUnit_id: index[1],
-          nama: index[2]
+        console.log(old[0] + ' ' + old[1])
+        console.log(index[0] + ' ' + index[1])
+        axios.put(host + old[0] + '&' + old[1], {
+          DataDasar_id: index[0],
+          Unit_id: index[1],
+          waktu: index[2],
+          capaian: index[3]
         }).then(res => {
           console.log(res.data)
         })
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host).then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + 'api/unit/' + index[0])
+        axios.delete(host + index[0] + '&' + index[1])
       })
+    },
+    oldRow(instance, cell, columns, row, value) {
+      console.log('lama ' + value)
     }
   }
 }

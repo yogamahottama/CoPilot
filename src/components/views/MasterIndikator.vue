@@ -13,14 +13,18 @@ import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
 var host = 'http://10.199.14.46:8028/'
+var dropdownDataDasar = 'http://10.199.14.46:8028/api/data-dasar/nama/'
 export default {
   // name: 'App',
   data() {
     return {
-      unit: [],
+      masterIndikator: [],
       form: {
-        KategoriUnit_id: 1,
-        nama: ''
+        id_pembilang: 1,
+        id_penyebut: 1,
+        nama: 'New Data',
+        deskripsi: 'New Data',
+        default_bobot: 0.0
       }
     }
   },
@@ -29,7 +33,7 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/masterindikator/').then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
@@ -40,8 +44,14 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'dropdown', title: 'Kategori', url: host + 'api/kategori/', width: '120px' },
-            { type: 'text', title: 'Nama', width: '120px' }
+            { type: 'dropdown', title: 'Pembilang', url: dropdownDataDasar, width: '120px' },
+            { type: 'dropdown', title: 'Penyebut', url: dropdownDataDasar, width: '120px' },
+            { type: 'text', title: 'Nama', width: '120px' },
+            { type: 'text', title: 'Deskripsi', width: '120px' },
+            { type: 'text', title: 'Default Bobot', width: '120px' },
+            { type: 'text', title: 'Create Date', width: '160px', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '160px', readOnly: true },
+            { type: 'text', title: 'Expired Date', width: '160px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
@@ -49,30 +59,33 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + 'api/unit/', this.form).then(res => {
+      axios.post(host + 'api/masterindikator/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/masterindikator/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put(host + 'api/unit/' + index[0], {
+        axios.put(host + 'api/masterindikator/' + index[0], {
           id: index[0],
-          KategoriUnit_id: index[1],
-          nama: index[2]
+          id_pembilang: index[1],
+          id_penyebut: index[2],
+          nama: index[3],
+          deskripsi: index[4],
+          default_bobot: index[5]
         }).then(res => {
           console.log(res.data)
         })
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + 'api/unit/').then(res => {
+      axios.get(host + 'api/masterindikator/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + 'api/unit/' + index[0])
+        axios.delete(host + 'api/masterindikator/' + index[0])
       })
     }
   }
