@@ -70,6 +70,11 @@
             <i class="fa fa-address-book-o"></i> Indikator Satker
           </a>
         </li>
+        <li>
+          <a href="/aspek">
+            <i class="fa fa-address-book-o"></i> Capaian Unit
+          </a>
+        </li>
       </ul>
     </li>
     <router-link tag="li" class="pageLink" to="/tasks">

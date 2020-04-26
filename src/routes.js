@@ -21,6 +21,7 @@ import MasterIndikatorView from './components/views/MasterIndikator.vue'
 import IndikatorPeriodeView from './components/views/IndikatorPeriode.vue'
 import SatuanKerjaView from './components/views/SatuanKerja.vue'
 import IndikatorSatkerView from './components/views/IndikatorSatker.vue'
+import AspekView from './components/views/Aspek.vue'
 
 // Routes
 const routes = [
@@ -123,6 +124,11 @@ const routes = [
         component: IndikatorSatkerView,
         name: 'IndikatorSatker',
         meta: {description: 'List of popular javascript repos'}
+      }, {
+        path: 'aspek',
+        component: AspekView,
+        name: 'Aspek',
+        meta: {description: 'Aspek'}
       }
     ]
   }, {
