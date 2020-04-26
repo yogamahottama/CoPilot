@@ -45,8 +45,8 @@ export default {
           columns: [
             { type: 'hidden', title: 'id', width: '10px' },
             { type: 'dropdown', title: 'Aspek', url: dropdownAspek, width: '100px' },
-            { type: 'dropdown', title: 'Pembilang', url: dropdownDataDasar, width: '150px' },
             { type: 'dropdown', title: 'Penyebut', url: dropdownDataDasar, width: '150px' },
+            { type: 'dropdown', title: 'Pembilang', url: dropdownDataDasar, width: '150px' },
             { type: 'text', title: 'Nama', width: '200px' },
             { type: 'text', title: 'Deskripsi', width: '200px' },
             { type: 'text', title: 'Default Bobot', width: '100px' },
@@ -72,8 +72,8 @@ export default {
         axios.put(host + 'api/masterindikator/' + index[0], {
           id: index[0],
           id_aspek: index[1],
-          id_pembilang: index[2],
-          id_penyebut: index[3],
+          id_penyebut: index[2],
+          id_pembilang: index[3],
           nama: index[4],
           deskripsi: index[5],
           default_bobot: index[6],
