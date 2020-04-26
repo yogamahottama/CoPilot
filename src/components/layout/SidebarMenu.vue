@@ -72,7 +72,7 @@
         </li>
         <li>
           <a href="/aspek">
-            <i class="fa fa-address-book-o"></i> Capaian Unit
+            <i class="fa fa-address-book-o"></i> Aspek
           </a>
         </li>
       </ul>

@@ -12,10 +12,9 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-// var host = 'http://10.199.14.46:8018/'
-var host = 'http://10.199.14.46:8026/'
-var dropdownDataDasar = 'http://10.199.14.46:8026/api/datadasar/nama/'
-var dropdownAspek = 'http://10.199.14.46:8026/api/aspekk/nama/'
+var host = 'http://10.199.14.46:8028/'
+var dropdownDataDasar = 'http://10.199.14.46:8028/api/datadasar/nama/'
+var dropdownAspek = 'http://10.199.14.46:8028/api/aspekk/nama/'
 export default {
   // name: 'App',
   data() {
