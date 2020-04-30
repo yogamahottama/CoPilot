@@ -21,10 +21,7 @@ export default {
     return {
       masterIndikator: [],
       form: {
-        id_aspek: 1,
-        nama: 'New Data',
-        deskripsi: 'New Data',
-        default_bobot: 0.0
+        nama: 'New Data'
       }
     }
   },
