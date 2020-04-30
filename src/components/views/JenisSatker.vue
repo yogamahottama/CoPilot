@@ -12,14 +12,14 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-var host = 'http://10.199.14.46:8028/'
+var host = 'http://localhost:8028/'
 export default {
   // name: 'App',
   data() {
     return {
-      jenisSatker: [],
+      jenissatker: [],
       form: {
-        nama: 'blank'
+        nama: 'New Data'
       }
     }
   },
@@ -39,10 +39,10 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'text', title: 'Nama', width: '120px' },
-            { type: 'text', title: 'Create Date', width: '200px', readOnly: true },
-            { type: 'text', title: 'Last Update', width: '200px', readOnly: true },
-            { type: 'text', title: 'Expired Date', width: '200px' }
+            { type: 'text', title: 'Nama', width: '500px' },
+            { type: 'text', title: 'Create Date', width: '175px', readOnly: true },
+            { type: 'text', title: 'Last Update', width: '175px', readOnly: true },
+            { type: 'text', title: 'Expired Date', width: '175px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
