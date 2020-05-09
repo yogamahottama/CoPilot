@@ -22,6 +22,10 @@ import IndikatorPeriodeView from './components/views/IndikatorPeriode.vue'
 import SatuanKerjaView from './components/views/SatuanKerja.vue'
 import IndikatorSatkerView from './components/views/IndikatorSatker.vue'
 import AspekView from './components/views/Aspek.vue'
+import DosenView from './components/views/Dosen.vue'
+import PenelitianView from './components/views/Penelitian.vue'
+import AbmasView from './components/views/Abmas.vue'
+import PublikasiView from './components/views/Publikasi.vue'
 
 // Routes
 const routes = [
