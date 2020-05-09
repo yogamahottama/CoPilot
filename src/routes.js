@@ -133,6 +133,26 @@ const routes = [
         component: AspekView,
         name: 'Aspek',
         meta: {description: 'Aspek'}
+      }, {
+        path: 'Dosen',
+        component: DosenView,
+        name: 'Dosen',
+        meta: {description: 'Simple and advance table in CoPilot'}
+      }, {
+        path: 'Penelitian',
+        component: PenelitianView,
+        name: 'Penelitian',
+        meta: {description: 'Simple and advance table in CoPilot'}
+      }, {
+        path: 'Abmas',
+        component: AbmasView,
+        name: 'Abmas',
+        meta: {description: 'Simple and advance table in CoPilot'}
+      }, {
+        path: 'Publikasi',
+        component: PublikasiView,
+        name: 'Publikasi',
+        meta: {description: 'Simple and advance table in CoPilot'}
       }
     ]
   }, {
